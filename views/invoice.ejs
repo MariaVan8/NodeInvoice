@@ -1,0 +1,96 @@
+
+<a class="return-link" href="/invoices">Return to Invoices</a>
+<% let totalAmount = 0; %>
+<% invoice.products.forEach(function(product, index) { %>
+  <% totalAmount += invoice.quantities[index] * product.unitCost; %>
+<% }); %>
+
+<% 
+  // Helper function to format the date
+  function formatDate(d) {
+    let date = new Date(d);
+    let day = ('0' + date.getDate()).slice(-2); // Add leading 0 if day is less than 10
+    let month = ('0' + (date.getMonth() + 1)).slice(-2); // Add leading 0 if month is less than 10
+    let year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  }
+
+  // Assuming invoice.issueDate and invoice.dueDate are your date fields
+  let formattedIssueDate = formatDate(invoice.issueDate);
+  let formattedDueDate = formatDate(invoice.dueDate);
+%>
+<div id="specificInvBody">
+
+    <div id="specificInvHeader">
+        <section id="logo">
+        <img
+            src="/images/backward.png"
+            alt="logo"
+            width="50px"
+        />
+        </section>
+        <section id="user-address">
+            <p>Example Co.</p>
+            <p>123 Example Street</p>
+            <p>Suite 101</p>
+            <p>DemoVille, BC</p>
+            <p>A1A 1A1</p>
+            <p>onwer@exampleco.com</p>
+        </section>
+        <p id="invoice-num"><%= invoice.invoiceNumber %></p>
+    </div>
+    <!-- ... -->
+    <main>
+        <section class="client-info-and-payment">
+            <section class="client-info">
+                <p class="title-style-1">BILL TO:</p>
+                <p><%= invoice.client.name %></p>
+                <p><%= invoice.client.companyName %></p>
+                <p><%= invoice.client.email %></p>
+            </section>
+            <section class="specific-client-details">
+                <article>
+                    <p class="title-style-2">DATE</p>
+                    <p><%= formattedIssueDate %></p>
+                </article>
+                <article>
+                    <p class="title-style-2">PLEASE PAY</p>
+                    <p><%= totalAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></p>
+                  </article>              
+                <article>
+                    <p class="title-style-2">DUE DATE</p>
+                    <p><%= formattedDueDate %></p>
+                </article>
+            </section>
+        </section>
+    <!-- ... -->
+    <table>
+        <tr>
+            <th class="title-style-1">ITEM</th>
+            <th class="title-style-2">QUANTITY</th>
+            <th class="title-style-2">RATE</th>
+            <th class="title-style-3">AMOUNT</th>
+        </tr>
+        <% invoice.products.forEach(function(product, index) { %>
+            <tr>
+                <td><%= product.name %></td> 
+                <td class="text-style-2"><%= invoice.quantities[index] %></td>
+                <td class="text-style-2"><%= product.unitCost.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
+                <td class="text-style-3"><%= (invoice.quantities[index] * product.unitCost).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
+            </tr>
+        <% }) %>
+    </table>
+    
+    <section class="payment-summary">
+        <section>
+            <p>Please remit payment via Interac E-Transfer to</p>
+            <p id="owner-email">owner@exampleco.com</p>    
+        </section>
+        <section class="total-section">
+            <p class="title-style-3">TOTAL DUE</p>
+            <p id="total-due" class="text-style-3"><%= totalAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></p>
+        </section>
+    </section>
+    </main>
+
+</div>

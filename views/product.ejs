@@ -1,0 +1,12 @@
+<% for (let i = 0; i < products.length; i++) { %> <% if(products[i].id === 
+  productId) { %>
+    <h1><%= products[i].name %></h1>
+    <div class="Product">
+      <p>Product ID: <%= products[i].id %></p>
+      <p>Product Code: <%= products[i].code %></p>
+      <p>Product Cost: $<%= (products[i].unitCost / 100).toFixed(2) %></p>
+    </div>
+    <a href="/products/edit/<%= productId %>"><button class="btn btn-Edit">Edit</button></a>
+  <% } %>
+<% } %>
+

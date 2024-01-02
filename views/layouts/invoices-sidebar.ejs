@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <%- include('../partials/header.ejs') %>
+    <main><%- body %></main>
+    <section class="invoices-sidebar">
+      <% if (invoices.length) { %>
+      <h3>Other Invoices</h3>
+      <ul>
+        <% for (let i = 0; i < invoices.length; i++) {%> <%# skip current
+        client %> <% if (invoiceId !== invoices[i].id) { %>
+        <li>
+          <a href="/invoices/<%= invoices[i].id %>"><%= invoices[i].name%></a>
+        </li>
+        <% }} %>
+      </ul>
+      <% } %>
+    </section>
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

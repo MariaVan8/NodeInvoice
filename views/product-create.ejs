@@ -1,0 +1,16 @@
+<h1>New Product</h1>
+
+<form action="/products/create" method="POST" class="product-create">
+    <label for="name">Name:</label>
+    <input class="inputfield" id="name" name="name" type="text" value="<%= product ? product.name : '' %>" required>
+
+    <label for="code">Code:</label>
+    <input class="inputfield" id="code" name="code" type="text" value="<%= product ? product.code : '' %>" required>
+
+    <label for="unitCost">Unit Cost:</label>
+    <input class="inputfield" id="unitCost" name="unitCost" type="number" step="0.01" value="<%= product ? product.unitCost : '' %>" required>
+
+    <button type="submit" class="btn btn-Submit">Submit</button>
+  </form>
+
+<%= errorMessage %>

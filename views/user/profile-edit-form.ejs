@@ -1,0 +1,21 @@
+<h1>Edit Profile</h1>
+
+<form action="/user/profile/edit/<%= userInfo.user.username %>"" method="POST" class="profile-edit-form">
+  <label for="username">Username:</label>
+  <input class="inputfield" id="username" name="username" type="text" value="<%= userInfo.user.username %>" readonly>
+
+  <label for="firstName">Name:</label>
+  <input class="inputfield" id="firstName" name="firstName" type="text" value="<%= userInfo.user.firstName %>">
+
+  <label for="lastName">Last Name:</label>
+  <input class="inputfield" id="lastName" name="lastName" type="text" value="<%= userInfo.user.lastName %>">
+
+  <label for="email">Email:</label>
+  <input class="inputfield" id="email" name="email" type="email" value="<%= userInfo.user.email %>">
+
+  <button type="submit" class="btn btn-submit">Save Changes</button>
+</form>
+
+<% if (errorMessage) { %>
+  <p class="error-message"><%= errorMessage %></p>
+<% } %>

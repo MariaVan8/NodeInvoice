@@ -1,0 +1,33 @@
+[
+  {
+      "id": "jsolomon",
+      "name": "Josh Solomon",
+      "imagePath": "/images/ProfessorJS.png",
+      "interests": [
+          "Code",
+          "Coffee",
+          "Teaching"
+      ]
+  },
+  {
+      "id": "hansolo",
+      "name": "Han Solomon",
+      "interests": [
+          "Parkour",
+          "Toys",
+          "Snacks"
+      ]
+  },
+  {
+      "id": "josh",
+      "name": "Joshua Giraffe",
+      "imagePath": "/images/JoshuaGiraffe.jpg",
+      "interests": [
+          "Coffee",
+          "Coffee",
+          "Calculus",
+          "Coffee",
+          "Magic"
+      ]
+  }
+]

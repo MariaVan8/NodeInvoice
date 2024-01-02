@@ -1,0 +1,38 @@
+<% 
+  // Helper function to format the date
+  function formatDate(d) {
+    let date = new Date(d);
+    let day = ('0' + date.getDate()).slice(-2); // Add leading 0 if day is less than 10
+    let month = ('0' + (date.getMonth() + 1)).slice(-2); // Add leading 0 if month is less than 10
+    let year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  }
+
+%>
+<h1>Invoices</h1>
+<div class="searchbar">
+  <form class="search-inputs" action="/invoices" method="GET">
+    <input class="inputfield" type="text" name="search" placeholder="Search by name">
+    <button type="submit" class="btn btn-Search">Search</button>
+  </form>
+  <div class="create-btn">
+    <a href="/invoices/create"><button class="btn btn-Create">New Invoice</button></a>
+  </div>
+</div>
+<div class="Invoices">
+  <% for (let i = 0; i < invoices.length; i++) { %>
+    <div class="invoices-wrapper">
+    <div class="invoice-details">
+      <a href="/invoices/<%= invoices[i]._id %>">
+        <span><strong>Invoice #</strong> <%= invoices[i].invoiceNumber %></span>
+     
+      <span>- <%= invoices[i].client.name %></span>
+      <span>- <%= formatDate(invoices[i].dueDate) %></span>
+    </a>
+    </div>
+    <div class="btn-class">
+      <a href="/invoices/<%= invoices[i]._id %>/delete"><button class="btn btn-Delete">Delete</button></a>
+    </div>
+  </div>
+  <% } %>
+</div>

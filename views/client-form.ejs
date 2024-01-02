@@ -1,0 +1,18 @@
+<h1><%= client_id ? "Edit" : "New" %> Client</h1>
+
+<form class="client-edit" action="/clients/<%= client_id ? 'edit/' + client_id : 'create' %>" method="POST">
+    <input type="hidden" id="client_id" name="client_id" value="<%= client_id %>">
+    <label for="name">Name:</label>
+    <input class="inputfield" id="name" name="name" type="text" value="<%= myClient.name ? myClient.name : '' %>">
+    
+    <label for="code">Code:</label>
+    <input class="inputfield" id="code" name="code" type="text" value="<%= myClient.code ? myClient.code : '' %>">
+    
+    <label for="companyName">Company Name:</label>
+    <input class="inputfield" id="companyName" name="companyName" type="text" value="<%= myClient.companyName ? myClient.companyName : '' %>">
+    
+    <label for="email">Email:</label>
+    <input class="inputfield" id="email" name="email" type="email" value="<%= myClient.email ? myClient.email : '' %>">   
+</form>
+<button type="submit" value="Submit" class="btn btn-Submit">Submit</button>
+<%= errorMessage %>

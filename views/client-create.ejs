@@ -1,0 +1,19 @@
+<h1>New Client</h1>
+
+<form action="/clients/create" method="POST" class="client-create">   
+
+    <label for="name">Name:</label>
+    <input class="inputfield" id="name" name="name" type="text" value="" required>
+
+    <label for="code">Code:</label>
+    <input class="inputfield" id="code" name="code" type="text" value="" required>
+    
+    <label for="companyName">Company Name:</label>
+    <input class="inputfield" id="companyName" name="companyName" type="text" value="" required>
+    
+    <label for="email">Email:</label>
+    <input class="inputfield" id="email" name="email" type="email" value="" required>
+
+    <button type="submit" class="btn btn-Submit">Submit</button>
+</form>
+<%= errorMessage %>

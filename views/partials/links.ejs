@@ -1,0 +1,11 @@
+<%if (reqInfo.authenticated) { %>
+  <a href="/secure/admin-area">Admin</a> | <a href="/user/logout">Logout</a> [<%=
+  reqInfo.username %>]
+  |<a href="/user/profile" class="profile">Profile</a>
+
+  <!-- 'else' must be in separate section with curly brackets to work. -->
+  <% } else { %>
+  <a href="/user/register" class="register">Register</a> |
+  <a href="/user/login" class="login">Login</a> |
+
+  <% } %>

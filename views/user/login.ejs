@@ -1,0 +1,26 @@
+<form action="/user/login" method="POST">
+    <table>
+      <tbody>
+        <tr>
+          <td>User Name:</td>
+          <td>
+            <input
+              name="username"
+              type="text"
+              value="<%= user.username ? user.username : '' %>"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Password:</td>
+          <td><input name="password" type="password" /></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" value="Submit" /></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <%= errorMessage ? errorMessage : "" %>
+  

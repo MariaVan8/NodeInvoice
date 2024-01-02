@@ -1,0 +1,110 @@
+<h1>New Invoice</h1>
+
+<form action="/invoices/create" method="POST" class="invoice-create">
+  <!-- Client Selection -->
+  <label for="client">Client:</label>
+  <select class="inputfield" id="client" name="client" required>
+    <% clients.forEach(function(client,i) { %>
+    <option value="<%= client._id %>" <%=invoice.client && clients[i]._id.equals(invoice.client._id) && 'selected' %>>
+      <%= client.name %> - <%= client.companyName %>
+    </option>
+    <% }); %>
+  </select>
+
+  <!-- Invoice Number -->
+  <label for="invoiceNumber">Invoice Number:</label>
+  <input
+    class="inputfield"
+    id="invoiceNumber"
+    name="invoiceNumber"
+    type="text"
+    value="<%=invoice.invoiceNumber ? invoice.invoiceNumber : '' %>"
+    required
+  />
+
+  <!-- Issue Date -->
+  <label for="issueDate">Issue Date:</label>
+  <input
+    class="inputfield"
+    id="issueDate"
+    name="issueDate"
+    type="date"
+    value="<%=invoice.issueDate ? invoice.issueDate.toISOString().split('T')[0] : '' %>"
+    required
+  />
+
+  <!-- Due Date -->
+  <label for="dueDate">Due Date:</label>
+  <input class="inputfield" id="dueDate" name="dueDate" type="date" 
+  value="<%=invoice.dueDate ? invoice.dueDate.toISOString().split('T')[0] : '' %>"
+  required />
+
+  <div id="product-items">
+    <label for="product">Product:</label>
+    <select name="product" id="product" required>
+      <% products.forEach(function(product) { %>
+      <option value="<%= product._id %>"><%= product.name %></option>
+      <% }); %>
+    </select>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" name="quantity" id="quantity" min="1" 
+    value="<%=invoice.quantities ? invoice.quantities : '' %>"
+    required />
+  </div>
+
+  <!-- Add more products button (implement JavaScript to handle this) -->
+  <button type="button" class="btn btn-add" onclick="addProductItem();">Add Another Product</button>
+
+  <!-- Submit Button -->
+  <button type="submit" class="btn btn-submit">Create Invoice</button>
+</form>
+
+<p><%= errorMessage %></p>
+
+<!-- JavaScript -->
+<!-- <script src="../scripts/invoiceForm.js"></script> -->
+
+<script>
+function addProductItem() {
+  const productItems = document.getElementById("product-items");
+
+  // Create elements for new product input fields
+  const newProductLabel = document.createElement("label");
+  newProductLabel.setAttribute("for", "product");
+  newProductLabel.textContent = "Product:";
+
+  const newProductSelect = document.createElement("select");
+  newProductSelect.setAttribute("name", "product");
+  newProductSelect.setAttribute("id", "product");
+  newProductSelect.setAttribute("required", "true");
+
+  // Access the existing products dropdown in your EJS form
+  const existingProducts = document.getElementById("product");
+  existingProducts.childNodes.forEach(function (option) {
+    if (option.nodeType === 1) { // Check if it's an element node
+      const newOption = option.cloneNode(true); // Clone existing options
+      newProductSelect.appendChild(newOption); // Append cloned options to the new dropdown
+    }
+  });
+
+  const newQuantityLabel = document.createElement("label");
+  newQuantityLabel.setAttribute("for", "quantity");
+  newQuantityLabel.textContent = "Quantity:";
+
+  const newQuantityInput = document.createElement("input");
+  newQuantityInput.setAttribute("type", "number");
+  newQuantityInput.setAttribute("name", "quantity");
+  newQuantityInput.setAttribute("id", "quantity");
+  newQuantityInput.setAttribute("min", "1");
+  newQuantityInput.setAttribute("required", "true");
+
+  // Append the new product elements to the product-items div
+  productItems.appendChild(newProductLabel);
+  productItems.appendChild(newProductSelect);
+  productItems.appendChild(newQuantityLabel);
+  productItems.appendChild(newQuantityInput);
+}
+
+</script>
+

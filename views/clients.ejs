@@ -1,0 +1,19 @@
+<h1>Clients</h1>
+<div class="searchbar">
+  <form class="search-inputs" action="/clients" method="GET">
+    <input class="inputfield" type="text" name="search" placeholder="Search by name">
+    <button type="submit" class="btn btn-Search">Search</button>
+  </form>
+  <div class="create-btn">
+    <a href="/clients/create"><button class="btn btn-Create">New Client</button></a>
+  </div>
+</div>
+<div class="Clients">
+    <% for (let i = 0; i < clients.length; i++ ) {%>
+      <a class="edit-a" href="/clients/<%= clients[i].id %>"><%= clients[i].name %></a>
+      <!-- <a href="/clients/<%= clients[i].id %>"><button>Details</button></a>  -->
+      <div class="btn-class">
+        <a href="/clients/<%= clients[i].id %>/delete"><button class="btn btn-Delete">Delete</button></a>
+      </div>
+    <% } %>
+</div>

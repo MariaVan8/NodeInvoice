@@ -1,0 +1,21 @@
+<h1>Products</h1>
+<div class="searchbar">
+  <form class="search-inputs" action="/products" method="GET">
+    <input class="inputfield" type="text" name="search" placeholder="Search by name">
+    <button type="submit" class="btn btn-Search">Search</button>
+  </form>
+  <div class="create-btn">
+    <a href="/products/create"><button class="btn btn-Create">New Product</button></a>
+  </div>
+</div>
+<div class="Detail-Delete">
+    <% for (let i = 0; i < products.length; i++ ) { %>
+      <div class="names">
+        <a class="edit-a" href="/products/<%= products[i].id %>"><%= products[i].name %></a> (<%= products[i].code %>)  $<%= (products[i].unitCost / 100).toFixed(2) %> 
+      </div>
+      <div class="btn-class">
+        <!-- <a href="/products/<%= products[i].id %>"><button class="btn btn-Details">Details</button></a>  -->
+        <a href="/products/<%= products[i].id %>/delete"><button class="btn btn-Delete">Delete</button></a>
+      </div>
+    <% } %>
+</div>

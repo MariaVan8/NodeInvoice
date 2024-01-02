@@ -1,0 +1,433 @@
+html,
+body{
+  font-family: 'Arial';
+  background-color: #F1F1F1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+header {
+  width: 100%;
+  padding: 1rem;
+}
+
+main {
+  float: left;
+  width: 95%;
+  padding: 1rem;
+  min-height: 10rem;
+}
+
+footer {
+  width: 100%;
+
+  font-size: 0.8rem;
+  clear: both;
+  margin: 1rem;
+}
+
+.profile-pic {
+  max-width: 20rem;
+}
+
+.btn {
+  padding: 5px 10px;
+  margin-top:10px;
+  font-size: 20px;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.inputfield
+{
+  height:30px;
+  font-size: 20px;
+}
+
+.clients-sidebar,
+.products-sidebar {
+  width: 20%;
+  float: right;
+  margin-top: 2rem;
+  padding: 1rem;
+  text-align: right;
+}
+
+.clients-sidebar li,
+.products-sidebar li {
+  list-style-type: none;
+}
+
+label {
+  display: block;
+  width: 100%;
+}
+.searchbar
+{
+  font-size: 30px;
+  font-weight: bold;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 30px;
+  align-content: center;
+}
+
+.searchbar .inputfield
+{
+  height:30px;
+  font-size: 20px;
+}
+
+.search-inputs{
+  display: grid;
+  align-items: center;
+}
+
+.searchbar .btn {
+  grid-column: 2;
+  padding: 10px 10px;
+  margin:5px;
+  font-size: 20px;
+  background-color: #f44336;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px; /* Add margin between buttons */
+}
+
+.searchbar .btn-Search 
+{
+  background-color: blue;
+}
+
+.searchbar .btn-Create
+{
+  white-space: nowrap;
+  background-color: green;
+}
+
+.create-btn{
+  justify-self: end;
+}
+
+.Detail-Delete .edit-a
+{
+  color: Blue;
+  text-decoration: underline;
+  grid-column: 1;
+}
+
+.Detail-Delete
+{
+  font-size: 20px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+}
+
+.Detail-Delete .btn {
+  padding: 5px 10px;
+  margin:5px;
+  font-size: 20px;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.Detail-Delete .btn-Details {
+  background-color: blue;
+}
+
+.Detail-Delete .btn-Delete {
+  background-color: #f44336;
+}
+
+.Detail-Delete .edit-a
+{
+  color: Blue;
+  text-decoration: underline;
+  
+}
+
+.Detail-Delete .names
+{
+  grid-column: 1;
+}
+
+.invoice-create .btn-add
+{
+  background-color: blue;
+}
+
+.invoice-create .btn-submit
+{
+  background-color: green;
+}
+
+.Clients
+{
+  font-size: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.Clients .btn {
+  padding: 5px 10px;
+  margin:5px;
+  font-size: 20px;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.btn-class{
+  justify-self: end;
+}
+
+.Clients .btn-Details {
+  background-color: blue;
+}
+
+.Clients .btn-Delete {
+  background-color: #f44336;
+}
+
+.Clients .edit-a
+{
+  color: Blue;
+  text-decoration: underline;
+  grid-column: 1;
+}
+
+.Clients .btn-Search
+{
+  display:flex;
+}
+
+.nav-bar a
+{
+  font-size: 30px;
+  margin-left: 10px;
+  margin-right: 20px;
+  color: black;
+}
+
+.Client
+{
+  font-size: 20px;
+  font-weight:500;
+  line-height: 2;
+}
+
+.btn-Edit
+{
+  background-color: blue;
+}
+
+.btn-Submit
+{
+  background-color: green;
+}
+
+.client-edit label
+{
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight:500;
+}
+
+.product-create label
+{
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight:500;
+}
+
+.unit-code
+{
+  font-size: 15px;
+}
+
+.Product
+{
+  font-size: 20px;
+  font-weight:500;
+  line-height: 2;
+}
+
+.product-edit label
+{
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight:500;
+}
+
+.client-create label
+{
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight:500;
+}
+
+
+#specificInvBody {
+    width: 700px;
+    height: 100vh;
+    margin: auto;
+    line-height: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+#specificInvHeader {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    vertical-align: top;
+    display: flex;
+}
+
+#specificInvHeader p {
+    margin-left: auto;
+}
+
+#specificInvHeader #logo img {
+    width: 150px
+}
+
+#invoice-num {
+    text-align: right;
+}
+
+.client-info-and-payment {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.specific-client-details{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.specific-client-details > article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    width: 120px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.specific-client-details > article > p {
+    margin: 0;
+    line-height: 1.2;
+}
+
+#specificInvBody table {
+    width: 100%;
+}
+#specificInvBody table, th, td{
+    border-collapse: collapse;
+}
+
+.title-style-1 {
+    font-weight: bold;
+    text-align: left;
+}
+
+.title-style-2 {
+    font-weight: bold;
+    text-align: center;
+}
+
+.title-style-3 {
+    font-weight: bold;
+    text-align: right;
+}
+
+td.text-style-2 {
+    text-align: center;
+}
+
+.text-style-3 {
+    text-align: right;
+}
+
+#specificInvBody table {
+    margin-top: 20px;
+    line-height: 15px;
+}
+
+.payment-summary {
+    margin-top: 20px;
+    display: flex;
+}
+
+.total-section {
+    margin-left: auto;
+}
+
+#specificInvBody footer {
+    position: absolute;
+    bottom: 0;
+    width: 700px;
+    text-align: right;
+}
+
+#specificInvBody footer.footer p {
+    text-align: right;
+}
+
+.btn-Delete {
+  background-color: #f44336;
+}
+
+.Invoices{
+  display: flex;
+  flex-direction: column;
+}
+
+.invoice-details{
+  display: flex;
+}
+
+.invoices-wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media print {
+  .nav-bar,
+  .return-link {
+    display: none;
+  }
+}
+
+.login,.register{
+padding: 0.5rem;
+}
