@@ -63,10 +63,12 @@ exports.Detail = async function (request, response) {
 
 // Handle client form GET request
 exports.Create = async function (request, response) {
+  let reqInfo = RequestService.reqHelper(request);
   response.render("client-create", {
     title: "Create Client",
     errorMessage: "",
     client_id: null,
+    reqInfo: reqInfo, 
     myClient: {},
   });
 };
@@ -74,12 +76,14 @@ exports.Create = async function (request, response) {
 
 
 exports.CreateClient = async function (request, response) {
+  let reqInfo = RequestService.reqHelper(request);
   // instantiate a new client Object populated with form data
   let tempClientObj = new Client({
     name: request.body.name,
     code: request.body.code,
     companyName: request.body.companyName,
     email: request.body.email,
+    
   });
   
   try {
@@ -96,6 +100,7 @@ exports.CreateClient = async function (request, response) {
         title: "Create Client",
         myClient: tempClientObj, // send back the data entered by the user
         errorMessage: responseObj.errorMsg,
+        reqInfo: reqInfo, 
       });
     }
   } catch (error) {
@@ -104,6 +109,7 @@ exports.CreateClient = async function (request, response) {
     response.render("client-create", {
       title: "Create Client",
       myClient: {}, // Reset form
+      reqInfo: reqInfo, 
       errorMessage: error.message || "An unexpected error occurred.",
     });
   }
@@ -112,6 +118,7 @@ exports.CreateClient = async function (request, response) {
 
 // Handle delete client GET request
 exports.DeleteClientById = async function (request, response) {
+  let reqInfo = RequestService.reqHelper(request);
   const clientId = request.params.id;
   console.log(`deleting single client by id ${clientId}`);
   let deletedClient = await _clientOps.deleteClientById(clientId);
@@ -121,11 +128,13 @@ exports.DeleteClientById = async function (request, response) {
     response.render("clients", {
       title: "Mongo Crud - Clients",
       clients: clients,
+      reqInfo: reqInfo
     });
   } else {
     response.render("clients", {
       title: "Mongo Crud - Clients",
       clients: clients,
+      reqInfo: reqInfo,
       errorMessage: "Error.  Unable to Delete",
     });
   }

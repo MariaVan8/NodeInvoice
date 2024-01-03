@@ -51,23 +51,24 @@ class InvoiceOps {
     console.log(result);
     return result;
   }
-/*
-  async updateInvoiceById(id, clientName, clientCode, companyName, email) {
-    console.log(`updating invoice by id ${id}`);
-    const invoice = await Invoice.findById(id);
-    console.log("original invoice: ", invoice);
-    client.name = clientName;
-    client.code = clientCode;
-    client.companyName = companyName;
-    client.email = email;
 
-    let result = await client.save();
-    console.log("updated client: ", result);
-    return {
-      obj: result,
-      errorMsg: "",
-    };
-  }*/
+  async updateInvoiceStatus(findId) {
+    try {
+      const invoiceDoc = await this.getInvoiceById(findId)
+      if (!invoiceDoc) {
+        console.error("error in retrieving invoice");
+        return false;
+      }
+      invoiceDoc.status = !invoiceDoc.status
+      await invoiceDoc.save();
+      return true;
+    }
+    catch (error) {
+      console.error("error updating invoice:", error.message);
+      return false;
+    }
+  }
+
 }
 
 module.exports = InvoiceOps;

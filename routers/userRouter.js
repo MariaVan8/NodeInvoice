@@ -21,8 +21,8 @@ userRouter.get("/profile", UserController.Profile);
 
 // Show Create Product Form
 //userRouter.get("/edit/:_id", UserController.EditProfile);
-userRouter.get("/profile/edit/:id", UserController.EditProfile);
+userRouter.get("/user/profile/edit/:username", UserController.EditProfile);
 // Handle Create Product Form Submission
-userRouter.post("/profile/edit/:username", UserController.SubmitEditProfile);
+userRouter.post("/user/profile/edit/:username", UserController.SubmitEditProfile);
 
 module.exports = userRouter;

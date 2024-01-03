@@ -6,4 +6,4 @@ Email: <%= userInfo.user.email %><br />
 
 <% if(reqInfo.roles?.length) { %> Roles: <%= reqInfo.roles %> <% } %>
 
-<a href="/profile/edit/<%= userInfo.user._id %>"><button class="btn btn-Edit">Edit</button></a>
+<a href="/user/profile/edit/<%= userInfo.user.username %>"><button class="btn btn-Edit">Edit</button></a>

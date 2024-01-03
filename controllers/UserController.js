@@ -111,28 +111,33 @@ exports.Profile = async function (req, res) {
 };
 
 exports.EditProfile = async function(req, res) {
+  let reqInfo = RequestService.reqHelper(req);
   console.log("EDIT PROFILE!!!!!")
   try {
     // Replace 'username' with the correct way you get the username from the request
     const username = req.params.username || req.session.username; 
     const response = await _userData.getUserByUsername(username);
-
+    console.log("RESPONSEEE!!",response)
     if (response && response.user) {
       // Render the profile edit form with the user's current data
-      res.render('profile-edit-form', {
+      res.render('user/profile-edit-form', {
         title: 'Edit Profile',
         userProfile: response.user,
         errorMessage: '',
+        reqInfo: reqInfo,
+        userInfo: response,
         username: username
       });
     } else {
       // If no user is found, redirect to a not found page or show an error message
       res.status(404).render('error-page', {
-        message: 'User not found'
+        message: 'User not found',
+        reqInfo: reqInfo
       });
     }
   } catch (error) {
     res.status(500).render('error-page', {
+     title: 'Edit Profile',
       message: 'Server error while retrieving user profile'
     });
   }
@@ -158,7 +163,7 @@ exports.SubmitEditProfile = async function(req, res) {
         res.redirect('/user/profile');
       } else {
         // If the user could not be updated, show an error message
-        res.render('profile-edit-form', {
+        res.render('/user/profile-edit-form', {
           title: 'Edit Profile',
           userProfile: req.body,
           errorMessage: 'Error updating profile'

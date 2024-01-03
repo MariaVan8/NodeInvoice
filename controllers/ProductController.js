@@ -62,9 +62,11 @@ exports.Detail = async function (request, response) {
 
 // Handle product form GET request
 exports.Create = async function (request, response) {
+  let reqInfo = RequestService.reqHelper(request);
   console.log("!!!!!!!!!!RENDER THE PRODUCT CREATE VIEW!!!!!!!!!")
   response.render("product-create", {
     title: "Create Product",
+    reqInfo: reqInfo,
     errorMessage: "",
     // product_id: null,
     product: {},
@@ -73,6 +75,7 @@ exports.Create = async function (request, response) {
 
 // Handle product form GET request
 exports.CreateProduct = async function (request, response) {
+  let reqInfo = RequestService.reqHelper(request);
   // instantiate a new product Object populated with form data
   let tempProductObj = new Product({
     name: request.body.name,
@@ -90,6 +93,7 @@ exports.CreateProduct = async function (request, response) {
     console.log(responseObj.obj);
     response.render("products", { 
       title: "Mongo Crud - " + responseObj.obj.name,
+      reqInfo: reqInfo,
       products: products,
       productId: responseObj.obj._id.valueOf(),
       
@@ -108,6 +112,7 @@ exports.CreateProduct = async function (request, response) {
 
 // Handle delete product GET request
 exports.DeleteProductById = async function (request, response) {
+  let reqInfo = RequestService.reqHelper(request);
   const productId = request.params.id;
   console.log(`deleting single product by id ${productId}`);
   let deletedProduct = await _productOps.deleteProductById(productId);
@@ -116,12 +121,14 @@ exports.DeleteProductById = async function (request, response) {
   if (deletedProduct) {
     response.render("products", {
       title: "Mongo Crud - products",
+      reqInfo: reqInfo,
       products: products,
     });
   } else {
     response.render("products", {
       title: "Mongo Crud - products",
       products: products,
+      reqInfo: reqInfo,
       errorMessage: "Error.  Unable to Delete",
     });
   }

@@ -25,6 +25,11 @@ const invoiceSchema = mongoose.Schema({
   quantities: [{
     type: Number,
   }],
+  status: {
+    type: Boolean,
+    default: false,
+    required: true
+  }
 },
 {collection: 'invoices'}
 );

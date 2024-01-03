@@ -115,6 +115,8 @@ app.use("/api", apiRouter);
 //secure area
 app.use("/secure", secureRouter);
 
+app.use(userRouter);
+
 // handle unrecognized routes
 app.get("*", function (req, res) {
   res.status(404).send('<h2 class="error">File Not Found</h2>');
