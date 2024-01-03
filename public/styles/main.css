@@ -413,6 +413,9 @@ td.text-style-2 {
 
 .invoice-details{
   display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .invoices-wrapper{
@@ -430,4 +433,8 @@ td.text-style-2 {
 
 .login,.register{
 padding: 0.5rem;
+}
+
+.btn-submit{
+  color: green;
 }
